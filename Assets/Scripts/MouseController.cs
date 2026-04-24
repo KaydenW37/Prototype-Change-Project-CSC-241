@@ -15,6 +15,7 @@ public class MouseController : MonoBehaviour
         Vector3 mousePos = Mouse.current.position.ReadValue();
 
         mouse_y = mousePos.y;
+<<<<<<< Updated upstream
         bool right = GameObject.Find("Player").GetComponent<PlayerController>()._isFacingRight;
 
         if (right == true) {
@@ -23,5 +24,12 @@ public class MouseController : MonoBehaviour
         else {
             mouse_x = (mousePos.x * -1);
         }
+=======
+        
+            mouse_x = mousePos.x;
+       
+>>>>>>> Stashed changes
     }
-}
+
+    }
+
