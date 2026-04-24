@@ -15,7 +15,7 @@ public class MouseController : MonoBehaviour
         Vector3 mousePos = Mouse.current.position.ReadValue();
 
         mouse_y = mousePos.y;
-        var right = GetComponent<PlayerController>()._isFacingRight;
+        bool right = GameObject.Find("Player").GetComponent<PlayerController>()._isFacingRight;
 
         if (right == true) {
             mouse_x = mousePos.x;
