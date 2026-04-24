@@ -15,10 +15,13 @@ public class MouseController : MonoBehaviour
         Vector3 mousePos = Mouse.current.position.ReadValue();
 
         mouse_y = mousePos.y;
+        var right = GetComponent<PlayerController>()._isFacingRight;
 
-        //if isTurnedRight = true {
-        mouse_x = mousePos.x;
-        //else {
-        //mouse_x = (mousePos.x * -1)
+        if (right == true) {
+            mouse_x = mousePos.x;
+        }
+        else {
+            mouse_x = (mousePos.x * -1);
+        }
     }
 }

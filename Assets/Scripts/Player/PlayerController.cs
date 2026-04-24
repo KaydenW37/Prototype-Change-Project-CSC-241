@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     #region state private fields
     
-    private bool _isFacingRight = true;
+    public bool _isFacingRight = true;
     private bool _isInKickBack = false;
     private bool _isFainting = false;
     private bool _hasLeftGround = false;
