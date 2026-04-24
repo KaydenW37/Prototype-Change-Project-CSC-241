@@ -5,6 +5,7 @@ public class ProjectileDamageEnemy : Projectile
     [SerializeField] private AudioClip _soundDamageEnemy;
     [SerializeField] private int damage = 5;
 
+    
     private void OnCollisionEnter2D(Collision2D other)    
     {
         //this projectile goes away when hitting anything

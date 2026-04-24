@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
     private float _earlyJumpTimeLeft = 0f;
 
     #endregion
-    
+
     private void Awake()
     {
         _input = GetComponent<PlayerInput>();

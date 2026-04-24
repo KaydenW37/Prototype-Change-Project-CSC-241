@@ -12,8 +12,7 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] protected AudioClip _soundShoot;
     [SerializeField] protected AudioClip _soundNoEffect;
-    
-    
+
     protected Rigidbody2D _rb;
 
     protected virtual void Awake()
@@ -24,8 +23,10 @@ public class Projectile : MonoBehaviour
 
     public virtual void SetDirection(Vector2 dir)
     {
-        dir = dir.normalized;
-        _rb.velocity = dir * speed;
+        var mouse = GameObject.Find("Mouse").GetComponent<MouseController>();
+        dir.x = mouse.mouse_x;
+        dir.y = mouse.mouse_y;
+        _rb.velocity = (dir * speed) / 750;
         AudioSystem.Instance.PlaySound(_soundShoot, transform.position);
     }
     
