@@ -219,17 +219,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 613f1eddb6ec54e84888f06ef1790bee, type: 3}
---- !u!114 &158797877 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2362196729081364781, guid: 7db9288d149dc4ec394ad39eeedc3f71, type: 3}
-  m_PrefabInstance: {fileID: 5043045729741584687}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86bc9fdfafe064c1eaf67f2af213372a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &176057615
 GameObject:
   m_ObjectHideFlags: 0
@@ -6507,9 +6496,11 @@ GameObject:
   - component: {fileID: 607826359}
   - component: {fileID: 607826358}
   - component: {fileID: 607826360}
+  - component: {fileID: 607826362}
+  - component: {fileID: 607826361}
   m_Layer: 11
   m_Name: DoorBreaker
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6808,9 +6799,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b492d5ccf389944a68b28a4893e6f4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
-  hp: 10
-  healthBar: {fileID: 158797877}
+  maxHp: 1
+  hp: 1
+  healthBar: {fileID: 0}
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -6820,13 +6811,13 @@ MonoBehaviour:
   OnZero:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 607826361}
+        m_TargetAssemblyTypeName: EightLegDoor, Assembly-CSharp
+        m_MethodName: AcceptDefeat
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6861,7 +6852,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 2.3254251, y: 3.0423748}
@@ -6889,10 +6880,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5be72ac4ad4ed854bb33ff3fbe6f2102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitsToBreak: 10
-  _breakSound: {fileID: 0}
-  breakEffect: {fileID: 0}
-  hitCount: 0
+--- !u!114 &607826361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607826353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3f4ef0832b59142bb24b118a443f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &607826362
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607826353}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1001 &610802761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7031,6 +7057,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -5.0137806, y: 9.098011}
+      - {x: -28.104242, y: 7.7564697}
+      - {x: -27.993673, y: -9.939935}
       - {x: -5.379773, y: -10.614904}
       - {x: 2.8522954, y: -10.524183}
       - {x: 3.260036, y: 8.820333}
@@ -7768,16 +7796,6 @@ CompositeCollider2D:
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
-  - m_Collider: {fileID: 607826355}
-    m_ColliderPaths:
-    - - X: 40031448
-        Y: 50031448
-      - X: 9968553
-        Y: 50031448
-      - X: 9968553
-        Y: 9968553
-      - X: 40031448
-        Y: 9968553
   - m_Collider: {fileID: 176057619}
     m_ColliderPaths:
     - - X: 300031552
@@ -8034,12 +8052,6 @@ CompositeCollider2D:
       - {x: 10.003119, y: 2.0031548}
       - {x: 7.9968457, y: 2.0031197}
       - {x: 7.996816, y: 1.0031548}
-      - {x: 4.0031447, y: 1.0031842}
-      - {x: 4.00312, y: 6.0031548}
-      - {x: -1.0031548, y: 6.00312}
-      - {x: -1.0031195, y: 4.9968452}
-      - {x: 0.9968553, y: 4.996816}
-      - {x: 0.99682593, y: 1.0031548}
       - {x: -7.9968457, y: 1.0031842}
       - {x: -7.996881, y: 2.0031548}
       - {x: -9.003155, y: 2.0031197}
@@ -8077,6 +8089,10 @@ CompositeCollider2D:
       - {x: -24.00312, y: 9.996845}
       - {x: -23.003155, y: 9.996816}
       - {x: -23.00312, y: -7.0031543}
+    - - {x: 4.00312, y: 4.9968452}
+      - {x: 4.00312, y: 6.0031548}
+      - {x: -1.0031548, y: 6.00312}
+      - {x: -1.0031195, y: 4.9968452}
     - - {x: -3.9968805, y: 2.9968452}
       - {x: -3.9968805, y: 4.0031548}
       - {x: -8.003155, y: 4.00312}
@@ -25166,7 +25182,7 @@ Transform:
   m_GameObject: {fileID: 2007298640}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.502106, y: 4.9900837, z: -10}
+  m_LocalPosition: {x: -6.0553513, y: 4.9900837, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25291,6 +25307,10 @@ CompositeCollider2D:
         Y: 139003328
       - X: 259362208
         Y: 141780112
+      - X: 28457584
+        Y: 128364696
+      - X: 29563274
+        Y: -48599348
       - X: 255702288
         Y: -55349044
   - m_Collider: {fileID: 1154782221}
@@ -25305,14 +25325,16 @@ CompositeCollider2D:
         Y: -99163
   m_CompositePaths:
     m_Paths:
-    - - {x: 25.570229, y: -5.534874}
+    - - {x: 25.570229, y: -5.5349045}
       - {x: 33.802296, y: -5.444155}
       - {x: 34.21001, y: 13.900334}
-      - {x: 25.93622, y: 14.177981}
-    - - {x: 5.940028, y: -0.0099163}
-      - {x: 5.940028, y: 10.044927}
+      - {x: 25.93622, y: 14.178011}
+      - {x: 2.8457587, y: 12.836443}
+      - {x: 2.8631709, y: 10.044927}
       - {x: -14.944269, y: 10.044897}
       - {x: -14.944241, y: -0.0099163}
+      - {x: 2.926024, y: -0.0099453}
+      - {x: 2.9563553, y: -4.8599358}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
