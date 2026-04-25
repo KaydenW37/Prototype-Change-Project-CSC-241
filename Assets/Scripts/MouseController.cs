@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,12 +6,16 @@ public class MouseController : MonoBehaviour
     public float mouse_x;
     public float mouse_y;
 
-    // Update is called once per frame
+    [SerializeField] private Camera _cam; 
+
     void Update()
     {
-        Vector3 mouse_position = Input.mousePosition;
-        Vector3 mousePos = Mouse.current.position.ReadValue();
+        if (_cam == null || Mouse.current == null) return;
 
+        Vector3 mousePos = Mouse.current.position.ReadValue();
+        Vector3 mouseWorld = _cam.ScreenToWorldPoint(mousePos);
+
+<<<<<<< Updated upstream
         mouse_y = mousePos.y;
 <<<<<<< Updated upstream
         bool right = GameObject.Find("Player").GetComponent<PlayerController>()._isFacingRight;
@@ -33,3 +35,9 @@ public class MouseController : MonoBehaviour
 
     }
 
+=======
+        mouse_x = mouseWorld.x;
+        mouse_y = mouseWorld.y;
+    }
+}
+>>>>>>> Stashed changes

@@ -7009,6 +7009,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouse_x: 0
   mouse_y: 0
+  _cam: {fileID: 2007298643}
 --- !u!4 &878751460
 Transform:
   m_ObjectHideFlags: 0
@@ -7428,7 +7429,7 @@ Transform:
   m_GameObject: {fileID: 1183153345}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.346286, y: 1.365741, z: -10}
+  m_LocalPosition: {x: -11.346674, y: 1.365741, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23698,7 +23699,7 @@ Transform:
   m_GameObject: {fileID: 2007298640}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.006234, y: 1.5112085, z: -10}
+  m_LocalPosition: {x: -3.882409, y: 1.5136704, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
