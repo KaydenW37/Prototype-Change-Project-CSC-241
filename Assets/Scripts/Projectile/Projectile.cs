@@ -23,13 +23,11 @@ public class Projectile : MonoBehaviour
 
     public virtual void SetDirection(Vector2 dir)
     {
-        var mouse = GameObject.Find("Mouse").GetComponent<MouseController>();
-        dir.x = mouse.mouse_x;
-        dir.y = mouse.mouse_y;
-        _rb.velocity = (dir * speed) / 750;
+        dir = dir.normalized;
+        _rb.velocity = dir * speed;
         AudioSystem.Instance.PlaySound(_soundShoot, transform.position);
     }
-    
+
     protected virtual void Vanish()
     {
         Destroy(gameObject);

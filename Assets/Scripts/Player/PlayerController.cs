@@ -47,8 +47,8 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region state private fields
-    
-    public bool _isFacingRight = true;
+
+    private bool _isFacingRight = true;
     private bool _isInKickBack = false;
     private bool _isFainting = false;
     private bool _hasLeftGround = false;
@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
     private float _earlyJumpTimeLeft = 0f;
 
     #endregion
-
+    
     private void Awake()
     {
         _input = GetComponent<PlayerInput>();
@@ -103,7 +103,14 @@ public class PlayerController : MonoBehaviour
         //(changes involving physics rigidbodies go in FixedUpdate)
         if (_input.actions["Fire"].WasPressedThisFrame())
         {
-            _shooter.Fire(new Vector2(_isFacingRight ? 1 : -1, 0));
+            //Old projectile aiming
+            //_shooter.Fire(new Vector2(_isFacingRight ? 1 : -1, 0));
+            //_healthSystem.SelfDamage(1);
+
+            //New projectile aiming based on mouse position
+            Vector2 ScreenPos = Mouse.current.position.ReadValue();
+            Vector2 WorldPos = Camera.main.ScreenToWorldPoint(ScreenPos);
+            _shooter.Fire(((Vector2)WorldPos - (Vector2)transform.position).normalized);
             _healthSystem.SelfDamage(1);
         }
 
@@ -163,17 +170,21 @@ public class PlayerController : MonoBehaviour
         }
         
         //Jump
-        if (_isJumpDown || _earlyJumpTimeLeft > 0f)
+        if (_isJumpDown|| _earlyJumpTimeLeft > 0f)
         {
             _isJumpDown = false; //we have now used up this button press
             
             //either being on the ground or still in coyote time we can jump
-            if (IsOnGround() || _coyoteTimeLeft > 0f)
+            if (IsOnGround() ||  _coyoteTimeLeft > 0f)
             {
                 _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
                 _coyoteTimeLeft = 0f; //jumping cancels coyote time (or you will get air jumps)
                 _earlyJumpTimeLeft = 0f; //can't reuse the early jump press.
-                _hasLeftGround = true;
+               
+                
+                    _hasLeftGround = true;
+               
+                
                 AudioSystem.Instance.PlaySound(_soundJump, transform.position);
             }
         }
