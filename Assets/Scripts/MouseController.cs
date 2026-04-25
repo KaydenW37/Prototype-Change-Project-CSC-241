@@ -24,7 +24,7 @@ public class MouseController : MonoBehaviour
             mouse_x = mousePos.x;
         }
         else {
-            mouse_x = (mousePos.x * -1);
+            mouse_x = (mousePos.x);
         }
 =======
         
