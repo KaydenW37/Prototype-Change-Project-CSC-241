@@ -4306,6 +4306,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: -6, y: 1, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 10
+      m_TileSpriteIndex: 12
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 0, y: 1, z: 0}
     second:
       serializedVersion: 2
@@ -6028,7 +6038,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: f21acc2d061484dd9b0e4f5f883450b5, type: 2}
   - m_RefCount: 24
     m_Data: {fileID: 11400000, guid: 1887361230ce74c0e8ab73fba9f9bf58, type: 2}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: ce09fd132729a48169545cbea60f1579, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 902fdbbca85d74fa596c42649324c069, type: 2}
@@ -6061,12 +6071,12 @@ Tilemap:
     m_Data: {fileID: -1915315038898582176, guid: 4d1b991a741884401a978f958de767db, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 6693830923273721819, guid: 4d1b991a741884401a978f958de767db, type: 3}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 1583669484485242081, guid: 4d1b991a741884401a978f958de767db, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -7858367779683405047, guid: 4d1b991a741884401a978f958de767db, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 561
+  - m_RefCount: 562
     m_Data:
       e00: 1
       e01: 0
@@ -6085,7 +6095,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 561
+  - m_RefCount: 562
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -6275,6 +6285,18 @@ CompositeCollider2D:
       - X: -31546
         Y: 20031488
       - X: -31546
+        Y: 10031548
+      - X: -49968452
+        Y: 10031548
+      - X: -49968452
+        Y: 20031488
+      - X: -49968508
+        Y: 20031548
+      - X: -60031492
+        Y: 20031548
+      - X: -60031548
+        Y: 20031488
+      - X: -60031548
         Y: 10031548
       - X: -129968456
         Y: 10031548
@@ -6518,6 +6540,10 @@ CompositeCollider2D:
       - {x: 2.0031197, y: 2.0031548}
       - {x: -0.0031546, y: 2.0031197}
       - {x: -0.003184, y: 1.0031548}
+      - {x: -4.9968452, y: 1.0031842}
+      - {x: -4.99688, y: 2.0031548}
+      - {x: -6.0031548, y: 2.0031197}
+      - {x: -6.003184, y: 1.0031548}
       - {x: -12.996846, y: 1.0031842}
       - {x: -12.996855, y: 1.940265}
       - {x: -13.053348, y: 1.9968452}
@@ -7382,7 +7408,7 @@ Transform:
   m_GameObject: {fileID: 1183153345}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.346674, y: 1.365741, z: -10}
+  m_LocalPosition: {x: -11.3125, y: 1.365741, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7405,7 +7431,7 @@ MonoBehaviour:
   m_BoundingVolume: {fileID: 0}
   m_BoundingShape2D: {fileID: 2118553986}
   m_ConfineScreenEdges: 1
-  m_Damping: 0
+  m_Damping: 0.25
 --- !u!1 &1200425670
 GameObject:
   m_ObjectHideFlags: 0
@@ -7785,11 +7811,11 @@ MonoBehaviour:
   m_YDamping: 7.6
   m_ZDamping: 0
   m_TargetMovementOnly: 1
-  m_ScreenX: 0.5015624
+  m_ScreenX: 0.5
   m_ScreenY: 0.4990741
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0.38687494
-  m_DeadZoneHeight: 0.5933331
+  m_DeadZoneWidth: 0.39
+  m_DeadZoneHeight: 0.7488891
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 0.57
@@ -23652,7 +23678,7 @@ Transform:
   m_GameObject: {fileID: 2007298640}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.882409, y: 1.5136704, z: -10}
+  m_LocalPosition: {x: -5.9265327, y: 1.4724829, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

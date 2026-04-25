@@ -1,10 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class ProjectileSlimer : Projectile
 {
     [SerializeField] private AudioClip _soundSlimed;
     [SerializeField] private GameObject slimePrefab;
+
     
     //[SerializeField] private LayerMask layersToDamage; //check by layer
     
@@ -28,11 +30,27 @@ public class ProjectileSlimer : Projectile
             
             AudioSystem.Instance.PlaySound(_soundSlimed, transform.position);
             
-            //destroy enemy hit (it will be around for the rest of this method)
-            Destroy(other.gameObject);
-            
+           
+
+            //UPDATED HERE, made it so if it is a tile it DOES NOT MAKE A GREEN THING. DID NOT ADD NEW SCRIPT SO KINDA BAD??
+            GameObject slime = null;
+
+            var collector = GameObject.Find("Player").GetComponent<PlayerCollector>();
+            Debug.Log(collector.SlimeCount);
+            if (other.gameObject.GetComponent<TilemapCollider2D>() != null && collector.SlimeCount > 0)
+            {
+                //destroy enemy hit (it will be around for the rest of this method)
+                Destroy(other.gameObject);
+                collector.SpendSlimes(1);
+                GameEventDispatcher.TriggerSlimeSpent();
+
+            }
+            else if (other.gameObject.GetComponent<TilemapCollider2D>() == null)
+            {
+                Destroy(other.gameObject);
+                slime = Instantiate(slimePrefab, other.transform.position, Quaternion.identity);
+            }
             //create a slime object (instantiate)
-            var slime = Instantiate(slimePrefab, other.transform.position, Quaternion.identity);
             if (!slime) return;
             
             //Transfer the velocity from the enemy hit to the new slime object

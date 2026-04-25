@@ -35,14 +35,29 @@ public class CountUI : MonoBehaviour
         }
     */
     }
-    
+
+    public void UpdateCountDown()
+    {
+        _count--;
+        _textMesh.text = "" + _count;
+
+        /*
+        if (_count == GameManager.Instance.playerSlimeTargetCount)
+        {
+            GameEventDispatcher.TriggerSlimeTargetReached();
+        }
+    */
+    }
+
     private void OnEnable()
     {
         GameEventDispatcher.SlimeCollected += UpdateCount;
+        GameEventDispatcher.SlimeSpent += UpdateCountDown;
     }
 
     private void OnDisable()
     {
         GameEventDispatcher.SlimeCollected -= UpdateCount;
+        GameEventDispatcher.SlimeSpent -= UpdateCountDown;
     }
 }

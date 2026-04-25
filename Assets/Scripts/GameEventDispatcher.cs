@@ -9,6 +9,8 @@ public static class GameEventDispatcher
     public static event Action SceneExited;
     public static event Action PlayerDefeated;
 
+    public static event Action SlimeSpent;
+
     public static void TriggerPlayerDefeated()
     {
         PlayerDefeated?.Invoke();
@@ -27,6 +29,10 @@ public static class GameEventDispatcher
     public static void TriggerSlimeCollected()
     {
         SlimeCollected?.Invoke();
+    }
+    public static void TriggerSlimeSpent()
+    {
+        SlimeSpent?.Invoke();
     }
 
     public static void TriggerSceneExited()
